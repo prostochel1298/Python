@@ -1,0 +1,26 @@
+from PyQt5.QtCore import*
+from PyQt5.QtWidgets import*
+from random import randint
+app = QApplication([])
+window = QWidget()
+window.setWindowTitle("Рандомайзер")
+text = QLabel("Нажмите на 'сгенерировать', чтобы определить победителя.")
+win_number = QLabel("Номер победителя!")
+btn = QPushButton("Сгенерировать!")
+lay1 = QHBoxLayout()
+lay2 = QHBoxLayout()
+lay3 = QHBoxLayout()
+lay4 = QVBoxLayout()
+lay1.addWidget(text,alignment=Qt.AlignCenter)
+lay2.addWidget(win_number,alignment=Qt.AlignCenter)
+lay3.addWidget(btn,alignment=Qt.AlignCenter)
+lay4.addLayout(lay1)
+lay4.addLayout(lay2)
+lay4.addLayout(lay3)
+window.setLayout(lay4)
+def gen_win():
+    win_number.setText(str(randint(1,1000)))
+btn.clicked.connect(gen_win)
+window.resize(500,500)
+window.show()
+app.exec_()
